@@ -1,0 +1,3 @@
+# print HelloWorld in Python
+
+print('Hello, world!')
