@@ -1,0 +1,26 @@
+import requests
+
+open_weather_api = "<apikey>"  # API key here
+
+url_to_fetch_lat_lon = f"http://api.openweathermap.org/geo/1.0/direct?q=delhi&limit=1&appid={open_weather_api}"  # f-string for formatting
+
+result_for_lat_lon = requests.get(url_to_fetch_lat_lon)
+
+data_lat_lon = result_for_lat_lon.json()
+
+location_data = data_lat_lon[0]
+
+latitude = location_data['lat']
+longitude = location_data['lon']
+
+
+url2 = f"https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={open_weather_api}"
+
+result_current_weather_data = requests.get(url2)
+
+data_current_weather = result_current_weather_data.json()
+
+data_current_weather = data_current_weather[0]
+
+
+print(data_current_weather)
